@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Envelope xmlns="admi.002.spi.1.2.xsd">
+    <AppHdr>
+        <Fr>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00832140</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </Fr>
+        <To>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00038166</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </To>
+        <BizMsgIdr>M00832140cb150b779d5e41cdb74c861</BizMsgIdr>
+        <MsgDefIdr>admi.002.spi.1.2</MsgDefIdr>
+        <CreDt>2020-02-14T13:41:38.085Z</CreDt>
+        <Sgntr></Sgntr>
+    </AppHdr>
+    <Document>
+        <admi.002.001.01>
+            <RltdRef>
+                <Ref>RUEkBcEPZ/0RXw6MnruFHGaLlc9V3j7IN</Ref>
+            </RltdRef>
+            <Rsn>
+                <RjctgPtyRsn>XML inválido</RjctgPtyRsn>
+                <RjctnDtTm>2020-02-14T13:41:38.085Z</RjctnDtTm>
+                <RsnDesc>Não foi possível interpretar o XML</RsnDesc>
+            </Rsn>
+        </admi.002.001.01>
+    </Document>
+</Envelope>
