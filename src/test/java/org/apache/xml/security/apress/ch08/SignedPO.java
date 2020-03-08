@@ -2,8 +2,10 @@ package org.apache.xml.security.apress.ch08;
 
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
+import org.apache.xml.security.Init;
 import org.apache.xml.security.algorithms.MessageDigestAlgorithm;
 import org.apache.xml.security.signature.XMLSignature;
+import org.apache.xml.security.spi.HsmRsaSha256SignatureSpi;
 import static org.apache.xml.security.test.SupportTest.getFileBody;
 import static org.apache.xml.security.test.SupportTest.getRsaPrivateKeyFromPemFile;
 import static org.apache.xml.security.test.SupportTest.getX509CertificateFromFile;
@@ -18,16 +20,14 @@ import org.w3c.dom.Element;
 
 /*
  *
- *
+ * EXEMPLO MODIFICADO DO LIVRO Pro Apache XML (Poornachandra Sarang, Ph.D).
  */
 public class SignedPO {
-
-//    static {
-//        Security.insertProviderAt(new HsmProvider(), 1);
-//    }
+    
     @Test
     public void main() throws Exception {
-        org.apache.xml.security.Init.init();
+        Init.init();
+        HsmRsaSha256SignatureSpi.register();
 
         X509Certificate cert = getX509CertificateFromFile(USER_DIR + "/src/test/resources/keys/certificate.01.cer");
         PrivateKey privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");

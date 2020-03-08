@@ -1,7 +1,6 @@
 package com.oracle.docs.jsr105;
 
 import java.security.PrivateKey;
-import java.security.Security;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +23,6 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import org.apache.xml.security.spi.HsmProvider;
 import static org.apache.xml.security.test.SupportTest.getFileBody;
 import static org.apache.xml.security.test.SupportTest.getRsaPrivateKeyFromPemFile;
 import static org.apache.xml.security.test.SupportTest.getX509CertificateFromFile;
@@ -37,16 +35,8 @@ import org.w3c.dom.Document;
  */
 public class GenEnveloped {
 
-    static {
-        Security.insertProviderAt(new HsmProvider(), 1);
-    }
-    
     @Test
     public void main() throws Exception {
-        
-//        Security.insertProviderAt(new org.apache.jcp.xml.dsig.internal.dom.XMLDSigRI(), 1);
-//        Security.addProvider(new HsmProvider());
-
         XMLSignatureFactory fac = XMLSignatureFactory.getInstance("DOM");
 
         Reference ref = fac.newReference(
@@ -64,20 +54,12 @@ public class GenEnveloped {
 
         final String USER_DIR = System.getProperty("user.dir");
         
-//        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-//        kpg.initialize(2048);
-//        KeyPair kp = kpg.generateKeyPair();
-        
         X509Certificate cert = getX509CertificateFromFile(USER_DIR + "/src/test/resources/keys/certificate.01.cer");
         PrivateKey pk = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
 
         KeyInfoFactory kif = fac.getKeyInfoFactory();
-//        KeyValue kv = kif.newKeyValue(kp.getPublic());
         KeyValue kv = kif.newKeyValue(cert.getPublicKey());
 
-        // Create a KeyInfo and add the KeyValue to it
-//        KeyInfo ki = kif.newKeyInfo(Collections.singletonList(kv));
-    
         List keyInfoList = new ArrayList<>();
         keyInfoList.add(kif.newKeyInfo(Collections.singletonList(kv)));
         keyInfoList.add(kif.newX509Data(Collections.singletonList(cert)));
@@ -88,9 +70,8 @@ public class GenEnveloped {
         // Instantiate the document to be signed
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         dbf.setNamespaceAware(true);
-        Document doc = newDocument(getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml")); //dbf.newDocumentBuilder().parse(new FileInputStream(args[0]));
+        Document doc = newDocument(getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml"));
 
-//        DOMSignContext dsc = new DOMSignContext(fakePrivateKey(), doc.getDocumentElement());
         DOMSignContext dsc = new DOMSignContext(pk, doc.getDocumentElement());
         
         XMLSignature signature = fac.newXMLSignature(si, ki);
@@ -101,23 +82,4 @@ public class GenEnveloped {
         Transformer trans = tf.newTransformer();
         trans.transform(new DOMSource(doc), new StreamResult(System.out));
     }
-    
-//    private PrivateKey fakePrivateKey() {
-//        return new PrivateKey() {
-//            @Override
-//            public String getAlgorithm() {
-//                return "RSA";
-//            }
-//
-//            @Override
-//            public String getFormat() {
-//                return "PKCS#8";
-//            }
-//
-//            @Override
-//            public byte[] getEncoded() {
-//                return new byte[] {-1, 0, -1, 0};
-//            }
-//        };
-//    }
 }

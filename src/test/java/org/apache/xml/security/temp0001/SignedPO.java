@@ -17,6 +17,9 @@ import org.apache.xml.security.utils.XMLUtils;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+/*
+ * ARQUIVO DE MODIFICACAO DO WILLIAN. 
+ */
 public class SignedPO {
     static String xml = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><Envelope><AppHdr><Fr><FIId><FinInstnId><Othr><Id>00000208</Id></Othr></FinInstnId></FIId></Fr><To><FIId><FinInstnId><Othr><Id>00392159</Id></Othr></FinInstnId></FIId></To><BizMsgIdr>M00000208GPI20200306054927000119</BizMsgIdr><MsgDefIdr>pibr.001.spi.1.0</MsgDefIdr><CreDt>2020-03-06T05:49:27.119Z</CreDt><Sgntr></Sgntr></AppHdr><Document><EchoReq><GrpHdr><MsgId>M00000208GPI20200306054927000119</MsgId><CreDtTm>2020-03-06T05:49:27.119Z</CreDtTm></GrpHdr><EchoTxInf><Data>TESTE!</Data></EchoTxInf></EchoReq></Document></Envelope>";
     static Document createDocument() throws Exception {

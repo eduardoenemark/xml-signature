@@ -17,8 +17,6 @@ public class HsmScenarioTest {
                 System.getProperty("user.dir") + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml"
         );
         final Document pibr001Doc = newDocument(pibr001String);
-
-        
     }
 
 }
