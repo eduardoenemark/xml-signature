@@ -1,0 +1,4 @@
+
+http://www.w3.org/2001/04/xmldsig-more#rsa-sha256 -> class org.apache.xml.security.algorithms.implementations.SignatureBaseRSA$SignatureRSASHA256
+
+org.apache.xml.security.algorithms.SignatureAlgorithm.register**
