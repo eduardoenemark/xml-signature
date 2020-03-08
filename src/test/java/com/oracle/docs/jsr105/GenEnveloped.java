@@ -30,8 +30,8 @@ import static org.apache.xml.security.util.Documents.newDocument;
 import org.junit.Test;
 import org.w3c.dom.Document;
 
-/*
- *
+/**
+ * UTILIZANDO A JSR 105.
  */
 public class GenEnveloped {
 

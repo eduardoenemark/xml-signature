@@ -18,8 +18,8 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-/*
- *
+/**
+ * UTILIZANDO O APACHE SANTUARIO.
  * EXEMPLO MODIFICADO DO LIVRO Pro Apache XML (Poornachandra Sarang, Ph.D).
  */
 public class SignedPO {
@@ -27,7 +27,6 @@ public class SignedPO {
     @Test
     public void main() throws Exception {
         Init.init();
-        HsmRsaSha256SignatureSpi.register();
 
         X509Certificate cert = getX509CertificateFromFile(USER_DIR + "/src/test/resources/keys/certificate.01.cer");
         PrivateKey privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
