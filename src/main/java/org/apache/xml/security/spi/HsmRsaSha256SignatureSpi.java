@@ -24,7 +24,7 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
 
     public HsmRsaSha256SignatureSpi() throws XMLSignatureException {
         super();
-        this.baos = new ByteArrayOutputStream();
+        this.outputStream = new ByteArrayOutputStream();
     }
 
 //    public HsmSignatureSpi(Provider provider) throws XMLSignatureException {
@@ -32,39 +32,39 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
 //    }
     @Override
     protected void engineUpdate(byte[] input, int offset, int len) throws XMLSignatureException {
-        this.baos.write(input, offset, len);
+        this.outputStream.write(input, offset, len);
 //        super.engineUpdate(input, offset, len);
     }
 
     @Override
     protected void engineUpdate(byte[] input) throws XMLSignatureException {
-        this.baos.reset();
-        this.baos.write(input, 0, input.length - 1);
+        this.outputStream.reset();
+        this.outputStream.write(input, 0, input.length - 1);
 //        super.engineUpdate(input);
     }
 
     @Override
     protected void engineUpdate(byte input) throws XMLSignatureException {
-        this.baos.write(input);
+        this.outputStream.write(input);
 //        super.engineUpdate(input);
     }
 
     /**
      *  METODO PARA O HSM (codigo de exemplo).
-     * @return 
+     * @return
      */
     @Override
     protected byte[] engineSign() {
         try {
             Signature rsa = Signature.getInstance("SHA256withRSA");
             rsa.initSign(this.privateKey);
-            rsa.update(this.baos.toByteArray());
+            rsa.update(this.outputStream.toByteArray());
             return rsa.sign();
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         } finally {
             try {
-                this.baos.close();
+                this.outputStream.close();
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -82,8 +82,8 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
         this.algorithmParameterSpec = algorithmParameterSpec;
     }
 
-    private PrivateKey privateKey;
-    private AlgorithmParameterSpec algorithmParameterSpec;
+    protected PrivateKey privateKey;
+    protected AlgorithmParameterSpec algorithmParameterSpec;
 
     @Override
     public String engineGetURI() {
@@ -99,9 +99,10 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
         Map<String, Object> algs = (Map) algorithmHash.get(SignatureAlgorithm.class);
         algs.remove(ALGO_ID_SIGNATURE_RSA_SHA256);
         algorithmHash.set(SignatureAlgorithm.class, algs);
-        SignatureAlgorithm.register(ALGO_ID_SIGNATURE_RSA_SHA256, HsmRsaSha256SignatureSpi.class.getCanonicalName());
+        SignatureAlgorithm.register(ALGO_ID_SIGNATURE_RSA_SHA256, canonicalNameClassForRegister);
     }
 
-    private ByteArrayOutputStream baos;
+    protected static String canonicalNameClassForRegister = HsmRsaSha256SignatureSpi.class.getCanonicalName();
+    protected ByteArrayOutputStream outputStream;
     private Logger LOGGER = LoggerFactory.getLogger(HsmRsaSha256SignatureSpi.class);
 }
