@@ -1,23 +1,29 @@
 package org.apache.xml.security.hsm;
 
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import org.apache.xml.security.Init;
 import org.apache.xml.security.algorithms.MessageDigestAlgorithm;
-import org.apache.xml.security.apress.ch08.SignedPO;
+import org.apache.xml.security.hsm.brb.BrbHsmScenarioTest;
+import org.apache.xml.security.keys.content.X509Data;
 import org.apache.xml.security.signature.XMLSignature;
-import org.apache.xml.security.spi.HsmRsaSha256SignatureSpi;
+import org.apache.xml.security.spi.HsmRsaSha256SignatureAlgorithmSpi;
 import static org.apache.xml.security.test.SupportTest.getFileBody;
 import static org.apache.xml.security.test.SupportTest.getRsaPrivateKeyFromPemFile;
 import static org.apache.xml.security.test.SupportTest.getX509CertificateFromFile;
 import org.apache.xml.security.transforms.Transforms;
 import static org.apache.xml.security.util.Documents.newDocument;
 import org.apache.xml.security.utils.XMLUtils;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.SAXException;
 
 /**
  * UTILIZANDO CHAMADA MODIFICADA PARA O APACHE SANTUARIO.
@@ -27,41 +33,63 @@ public class HsmScenarioTest {
 
     @Test
     public void pibr001Spi1_0Sign() throws Exception {
+        long millisStart, millisEnd;
+        millisStart = System.currentTimeMillis();
+
         Init.init();
-        HsmRsaSha256SignatureSpi.register();
+        HsmRsaSha256SignatureAlgorithmSpi.register();
 
-        X509Certificate cert = getX509CertificateFromFile(USER_DIR + "/src/test/resources/keys/certificate.01.cer");
-        PrivateKey privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
+        Element root = pibr001Doc.getDocumentElement();
 
-        /* Create a po document */
-        Document doc = newDocument(getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml"));
+        XMLSignature signature = new XMLSignature(pibr001Doc, "", XMLSignature.ALGO_ID_SIGNATURE_RSA_SHA256, Transforms.TRANSFORM_C14N_EXCL_OMIT_COMMENTS);
 
-        /* Obtain the root element */
-        Element root = doc.getDocumentElement();
+        // Create canonical XML do KeyInfo
+        Transforms transformsKeyInfo = new Transforms(pibr001Doc);
+        transformsKeyInfo.addTransform(Transforms.TRANSFORM_C14N_EXCL_OMIT_COMMENTS);
 
-        /* Create a XMLSignature instance that uses RSA_SHA1 algorithm */
-        XMLSignature signature = new XMLSignature(doc, "", XMLSignature.ALGO_ID_SIGNATURE_RSA_SHA256);
+        // Create canonical XML do AppHdr
+        Transforms transformsAppHdr = new Transforms(pibr001Doc);
+        transformsAppHdr.addTransform(Transforms.TRANSFORM_ENVELOPED_SIGNATURE);
+        transformsAppHdr.addTransform(Transforms.TRANSFORM_C14N_EXCL_OMIT_COMMENTS);
 
-        /* Create canonical XML */
-        Transforms transforms = new Transforms(doc);
-        transforms.addTransform(Transforms.TRANSFORM_ENVELOPED_SIGNATURE);
+        // Create canonical XML do Document
+        Transforms transformsDocument = new Transforms(pibr001Doc);
+        transformsDocument.addTransform(Transforms.TRANSFORM_C14N_EXCL_OMIT_COMMENTS);
 
-        /* Add canonicalized document to signature */
-        signature.addDocument("", transforms, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
+        // Add canonicalized document to signature
+        signature.addDocument("#id_key_info", transformsKeyInfo, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
+        signature.addDocument("", transformsAppHdr, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
+        signature.addDocument("", transformsDocument, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
 
-        /* Add the public key information to signature */
-        signature.addKeyInfo(cert);
+        X509Data x509Data = new X509Data(pibr001Doc);
+        x509Data.addIssuerSerial(certificate.getIssuerX500Principal().getName(), certificate.getSerialNumber());
+        signature.getKeyInfo().add(x509Data);
 
-        /* Add signature itself to the PO document */
+        signature.getKeyInfo().setId("id_key_info");
         root.appendChild(signature.getElement());
-
-        /* Sign the document */
         signature.sign(privateKey);
 
-        /* Output the memory document using XMLUtils. */
-        XMLUtils.outputDOMc14nWithComments(doc, System.out);
+        XMLUtils.outputDOMc14nWithComments(pibr001Doc, System.out);
+
+        millisEnd = System.currentTimeMillis();
+        LOGGER.info("\n\nTIMES: {} -> (start: {}, end: {})", (millisEnd - millisStart), millisStart, millisEnd);
     }
 
+    @BeforeClass
+    public static void init() throws IOException, GeneralSecurityException, SAXException {
+        certificate = getX509CertificateFromFile(USER_DIR + "/src/test/resources/keys/certificate.01.cer");
+        privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
+        pibr001Doc = newDocument(getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml"));
+    }
+
+    @AfterClass
+    public static void end() {
+    }
+
+    private static X509Certificate certificate;
+    private static PrivateKey privateKey;
+    private static Document pibr001Doc;
+
     static final String USER_DIR = System.getProperty("user.dir");
-    private static Logger LOGGER = LoggerFactory.getLogger(SignedPO.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(BrbHsmScenarioTest.class);
 }

@@ -1,12 +1,18 @@
 package org.apache.xml.security.spi;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.lang.reflect.Field;
+import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
+import java.security.SignatureException;
 import java.security.spec.AlgorithmParameterSpec;
 import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.xml.security.algorithms.SignatureAlgorithm;
 import org.apache.xml.security.algorithms.implementations.SignatureBaseRSA;
 import org.apache.xml.security.exceptions.AlgorithmAlreadyRegisteredException;
@@ -18,18 +24,15 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author eduardo
+ *
  */
-public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
+public class HsmRsaSha256SignatureAlgorithmSpi extends SignatureBaseRSA {
 
-    public HsmRsaSha256SignatureSpi() throws XMLSignatureException {
+    public HsmRsaSha256SignatureAlgorithmSpi() throws XMLSignatureException {
         super();
-        this.outputStream = new ByteArrayOutputStream();
+        this.setOutputStream(new ByteArrayOutputStream());
     }
 
-//    public HsmSignatureSpi(Provider provider) throws XMLSignatureException {
-//        super(provider);
-//    }
     @Override
     protected void engineUpdate(byte[] input, int offset, int len) throws XMLSignatureException {
         this.outputStream.write(input, offset, len);
@@ -49,10 +52,6 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
 //        super.engineUpdate(input);
     }
 
-    /**
-     *  METODO PARA O HSM (codigo de exemplo).
-     * @return
-     */
     @Override
     protected byte[] engineSign() {
         try {
@@ -60,12 +59,12 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
             rsa.initSign(this.privateKey);
             rsa.update(this.outputStream.toByteArray());
             return rsa.sign();
-        } catch (Exception ex) {
+        } catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException ex) {
             throw new RuntimeException(ex);
         } finally {
             try {
                 this.outputStream.close();
-            } catch (Exception ex) {
+            } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         }
@@ -77,13 +76,11 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
 //        super.engineInitSign(privateKey);
     }
 
-    protected void engineInitSign(Key signingKey, AlgorithmParameterSpec algorithmParameterSpec) throws XMLSignatureException {
-        this.privateKey = privateKey;
+    @Override
+    protected void engineInitSign(Key privateKey, AlgorithmParameterSpec algorithmParameterSpec) throws XMLSignatureException {
+        this.privateKey = (PrivateKey) privateKey;
         this.algorithmParameterSpec = algorithmParameterSpec;
     }
-
-    protected PrivateKey privateKey;
-    protected AlgorithmParameterSpec algorithmParameterSpec;
 
     @Override
     public String engineGetURI() {
@@ -102,7 +99,17 @@ public class HsmRsaSha256SignatureSpi extends SignatureBaseRSA {
         SignatureAlgorithm.register(ALGO_ID_SIGNATURE_RSA_SHA256, canonicalNameClassForRegister);
     }
 
-    protected static String canonicalNameClassForRegister = HsmRsaSha256SignatureSpi.class.getCanonicalName();
-    protected ByteArrayOutputStream outputStream;
-    private Logger LOGGER = LoggerFactory.getLogger(HsmRsaSha256SignatureSpi.class);
+    public void setCanonicalNameClassForRegister(Class clazz) {
+        canonicalNameClassForRegister = clazz.getCanonicalName();
+    }
+
+    private PrivateKey privateKey;
+    private AlgorithmParameterSpec algorithmParameterSpec;
+
+    @Setter
+    @Getter
+    private ByteArrayOutputStream outputStream;
+    private static String canonicalNameClassForRegister = HsmRsaSha256SignatureAlgorithmSpi.class.getCanonicalName();
+
+    private final Logger LOGGER = LoggerFactory.getLogger(HsmRsaSha256SignatureAlgorithmSpi.class);
 }

@@ -3,17 +3,13 @@ package org.apache.xml.security.hsm.brb;
 import br.com.brb.hsm.api.security.DinamoGenericException;
 import br.com.brb.hsm.api.security.DinamoManager;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;
 import org.apache.xml.security.Init;
 import org.apache.xml.security.algorithms.MessageDigestAlgorithm;
-import org.apache.xml.security.apress.ch08.SignedPO;
 import org.apache.xml.security.signature.XMLSignature;
-import org.apache.xml.security.spi.brb.BrbHsmRsaSha256SignatureSpi;
+import org.apache.xml.security.spi.brb.BrbHsmRsaSha256SignatureAlgorithmSpi;
 import static org.apache.xml.security.test.SupportTest.getFileBody;
 import static org.apache.xml.security.test.SupportTest.getRsaPrivateKeyFromPemFile;
 import org.apache.xml.security.transforms.Transforms;
@@ -40,7 +36,7 @@ public class BrbHsmScenarioTest {
         millisStart = System.currentTimeMillis();
 
         Init.init();
-        BrbHsmRsaSha256SignatureSpi.register();
+        BrbHsmRsaSha256SignatureAlgorithmSpi.register();
 
         Element root = pibr001Doc.getDocumentElement();
 
@@ -52,7 +48,7 @@ public class BrbHsmScenarioTest {
 
         signature.addDocument("", transforms, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
 //        signature.addDocument("/Envelope/Document", transforms, MessageDigestAlgorithm.ALGO_ID_DIGEST_SHA256);
-        signature.addKeyInfo(brbCertificate);
+        signature.addKeyInfo(certificate);
         root.appendChild(signature.getElement());
         signature.sign(privateKey);
 
@@ -80,7 +76,7 @@ public class BrbHsmScenarioTest {
             dinamoManager.setApplyCompactation(false);
         }
         {
-            brbCertificate = dinamoManager.getOurX509Certificate();
+            certificate = dinamoManager.getOurX509Certificate();
             privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
             pibr001Doc = newDocument(getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml"));
         }
@@ -91,7 +87,7 @@ public class BrbHsmScenarioTest {
         dinamoManager.closeSession();
     }
 
-    private static X509Certificate brbCertificate;
+    private static X509Certificate certificate;
     private static DinamoManager dinamoManager;
     private static PrivateKey privateKey;
     private static Document pibr001Doc;

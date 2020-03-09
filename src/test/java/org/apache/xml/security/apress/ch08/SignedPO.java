@@ -5,7 +5,6 @@ import java.security.cert.X509Certificate;
 import org.apache.xml.security.Init;
 import org.apache.xml.security.algorithms.MessageDigestAlgorithm;
 import org.apache.xml.security.signature.XMLSignature;
-import org.apache.xml.security.spi.HsmRsaSha256SignatureSpi;
 import static org.apache.xml.security.test.SupportTest.getFileBody;
 import static org.apache.xml.security.test.SupportTest.getRsaPrivateKeyFromPemFile;
 import static org.apache.xml.security.test.SupportTest.getX509CertificateFromFile;
