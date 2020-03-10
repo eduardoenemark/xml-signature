@@ -83,7 +83,7 @@ public class HsmScenarioTest {
             sgntr.appendChild(signature.getElement());
         }
         
-        //signature.sign(privateKey);
+        signature.sign(privateKey);
 
         XMLUtils.outputDOMc14nWithComments(pibr001Doc, System.out);
 
