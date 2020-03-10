@@ -32,7 +32,9 @@ public final class Documents {
 
     static {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        documentBuilderFactory.setNamespaceAware(false);
+        documentBuilderFactory.setNamespaceAware(true);
+        documentBuilderFactory.setValidating(true);
+        documentBuilderFactory.setIgnoringComments(true);
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
         } catch (ParserConfigurationException ex) {
