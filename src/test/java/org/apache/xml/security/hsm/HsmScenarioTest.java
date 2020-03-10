@@ -45,7 +45,7 @@ public class HsmScenarioTest {
         Element root = pibr001Doc.getDocumentElement();
         XMLSignature signature = new XMLSignature(
                 pibr001Doc,
-                "#Envelope",
+                "",
                 XMLSignature.ALGO_ID_SIGNATURE_RSA_SHA256,
                 Transforms.TRANSFORM_C14N_EXCL_OMIT_COMMENTS
         );
@@ -97,9 +97,9 @@ public class HsmScenarioTest {
         privateKey = getRsaPrivateKeyFromPemFile(USER_DIR + "/src/test/resources/keys/private-key.01.key");
         pibr001Doc = newDocument(
                 getFileBody(USER_DIR + "/src/test/resources/spi.1.2/pibr.001.spi.1.0_msg.xml")
-                        .replaceAll("<AppHdr>",   "<AppHdr id=\"AppHdr\">")
-                        .replaceAll("<Document>", "<Document id=\"Document\">")
-                        .replaceAll("<Sgntr>",    "<Sgntr id=\"Sgntr\">")
+                        .replaceAll("<AppHdr>",   "<AppHdr ID=\"AppHdr\">")
+                        .replaceAll("<Document>", "<Document ID=\"Document\">")
+                        .replaceAll("<Sgntr>",    "<Sgntr ID=\"Sgntr\">")
         );
     }
 
