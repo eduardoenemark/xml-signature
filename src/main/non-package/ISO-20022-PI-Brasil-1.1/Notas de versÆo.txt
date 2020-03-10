@@ -1,0 +1,10 @@
+Versão 1.0 - 14/11/2019
+
+- Versão inicial com as mensagens pacs.008, pacs.002 e admi.002.
+
+
+Versão 1.1 - 17/01/2020
+
+- Inclusão das mensagens pibr.001 e pibr.002;
+- Remoção do schema do XMLDSIG do XSD. As tags passam a utilizar um namespace próprio;
+- Pequenas correções nos schemas das mensagens admi.002, pacs.002 e pacs.008.

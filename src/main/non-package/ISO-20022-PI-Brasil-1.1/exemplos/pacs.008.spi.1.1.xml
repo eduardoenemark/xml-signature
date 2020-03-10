@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Envelope xmlns="pacs.008.spi.1.1.xsd">
+    <AppHdr>
+        <Fr>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00653405</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </Fr>
+        <To>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00736634</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </To>
+        <BizMsgIdr>M00653405803f4a7e905e4355bf968a2</BizMsgIdr>
+        <MsgDefIdr>pacs.008.spi.1.1</MsgDefIdr>
+        <CreDt>2019-12-10T11:22:13.795Z</CreDt>
+        <Sgntr>
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                    <ds:Reference URI="#b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>zqj93e6vEFVL2Pssc9nUdPweSYVxUadBaTebSuaCG0I=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference URI="">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>LrZoVaudkSbJbCM8/s0QT7ejlPGNVHt0uaT/HrCoZX8=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>xaYzMm+MbzWxgpZyRPUTa7X6mFQ6bn5EAccCtcXOOEc=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>z2rH67+Rv3ofKoGkrufiUXSgLO3DxqblwuaTbR5qbyYHnVrOPB5su3wwAJoAPNEW5LrSh9pD3ECq
+                    4nrRd7UDHi9cmSalr42zKPvpwvVPZTgQkGTyvyQAFCUCnfhpj/qalU1fIfw0Ie60WTsqHnAY/sUX
+                    n6HIBdHtJ/Vd7ZuWB8elCd09DE3MlV9gTqN7KCgEEvw+y0KvODme1SXngVKNA//udA4nhpsUCqDQ
+                    pCmNzUXDG9yWiziSL4fXE/IQ1frgoglw/IZkZ1Emc4VdNJd+q4U3HJBThHeMj1fYtucLS/JZi+ur
+                    bAIolIwpYldGgmd/sEEKe0gE9cMWryjsSVBnxg==
+                </ds:SignatureValue>
+                <ds:KeyInfo Id="b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                    <ds:X509Data>
+                        <ds:X509IssuerSerial>
+                            <ds:X509IssuerName>CN=SPI - Banco Central do Brasil</ds:X509IssuerName>
+                            <ds:X509SerialNumber>17649420304715376549</ds:X509SerialNumber>
+                        </ds:X509IssuerSerial>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+            </ds:Signature>
+        </Sgntr>
+    </AppHdr>
+    <Document>
+        <FIToFICstmrCdtTrf>
+            <GrpHdr>
+                <MsgId>M00653405803f4a7e905e4355bf968a2</MsgId>
+                <CreDtTm>2019-12-10T11:22:13.795Z</CreDtTm>
+                <NbOfTxs>1</NbOfTxs>
+                <SttlmInf>
+                    <SttlmMtd>CLRG</SttlmMtd>
+                </SttlmInf>
+                <PmtTpInf>
+                    <InstrPrty>HIGH</InstrPrty>
+                </PmtTpInf>
+            </GrpHdr>
+            <CdtTrfTxInf>
+                <PmtId>
+                    <EndToEndId>E00653405201912100822cdb5bbd1cd1</EndToEndId>
+                </PmtId>
+                <IntrBkSttlmAmt Ccy="BRL">7070027.97</IntrBkSttlmAmt>
+                <AccptncDtTm>2019-12-10T11:22:13.799Z</AccptncDtTm>
+                <ChrgBr>SLEV</ChrgBr>
+                <Dbtr>
+                    <Id>
+                        <PrvtId>
+                            <Othr>
+                                <Id>52354436011</Id>
+                            </Othr>
+                        </PrvtId>
+                    </Id>
+                </Dbtr>
+                <DbtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>6364179</Id>
+                            <Issr>3665</Issr>
+                        </Othr>
+                    </Id>
+                    <Tp>
+                        <Cd>CACC</Cd>
+                    </Tp>
+                </DbtrAcct>
+                <DbtrAgt>
+                    <FinInstnId>
+                        <ClrSysMmbId>
+                            <MmbId>00653405</MmbId>
+                        </ClrSysMmbId>
+                    </FinInstnId>
+                </DbtrAgt>
+                <CdtrAgt>
+                    <FinInstnId>
+                        <ClrSysMmbId>
+                            <MmbId>00549562</MmbId>
+                        </ClrSysMmbId>
+                    </FinInstnId>
+                </CdtrAgt>
+                <Cdtr>
+                    <Id>
+                        <PrvtId>
+                            <Othr>
+                                <Id>67427837458</Id>
+                            </Othr>
+                        </PrvtId>
+                    </Id>
+                </Cdtr>
+                <CdtrAcct>
+                    <Id>
+                        <Othr>
+                            <Id>34214769302</Id>
+                            <Issr>6775</Issr>
+                        </Othr>
+                    </Id>
+                    <Tp>
+                        <Cd>CACC</Cd>
+                    </Tp>
+                </CdtrAcct>
+                <RmtInf>
+                    <Ustrd>campo livre</Ustrd>
+                </RmtInf>
+            </CdtTrfTxInf>
+        </FIToFICstmrCdtTrf>
+    </Document>
+</Envelope>

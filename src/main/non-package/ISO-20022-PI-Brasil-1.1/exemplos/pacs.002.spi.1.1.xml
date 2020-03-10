@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Envelope xmlns="pacs.002.spi.1.1.xsd">
+    <AppHdr>
+        <Fr>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00107586</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </Fr>
+        <To>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00610158</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </To>
+        <BizMsgIdr>M00107586e1f79dc27e19428cb2fa078</BizMsgIdr>
+        <MsgDefIdr>pacs.002.spi.1.1</MsgDefIdr>
+        <CreDt>2019-12-10T11:22:13.778Z</CreDt>
+        <Sgntr>
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                    <ds:Reference URI="#b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>zqj93e6vEFVL2Pssc9nUdPweSYVxUadBaTebSuaCG0I=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference URI="">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>VwXSfV8gzpT2C0AfdM6V52NxWhg3JcDrO4Iiwh552u0=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>cpxvVL7dnFHU4zgFcKNN/g+tJ2KvORX6MBfFxorpRGQ=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>MxCtm8qqLd6BoBs9GO33339Suw+9+vAPnfLSrmVWxn1PTV1lScdg9avxkE1TjEkUPmWo8wANiH84
+                    QeRYTg+jAYZVuNu5Vd7lbZgD4CxxafoeXEpN/a/AF0uhtQFtr/nyTzYaJfEm4ArG0E5gJ9fy2Up0
+                    M4RECKuuEOE10sGu3Td4jrPCLjOzulfL+N2B43QpeSZHblkxliPP7XRC4vJipSzd9bmDiqwyaTuB
+                    C7aY1IpXycToMz2Z99nGkG6Ro3jdaJ63wiHhI5enbE0CyGSSLCLOXiA1mttfV8tMrxXumMZEAwhY
+                    PNJBabM4tBEeW8xW/PHWgtWCLMz5ANdtDSgVyg==
+                </ds:SignatureValue>
+                <ds:KeyInfo Id="b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                    <ds:X509Data>
+                        <ds:X509IssuerSerial>
+                            <ds:X509IssuerName>CN=SPI - Banco Central do Brasil</ds:X509IssuerName>
+                            <ds:X509SerialNumber>17649420304715376549</ds:X509SerialNumber>
+                        </ds:X509IssuerSerial>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+            </ds:Signature>
+        </Sgntr>
+    </AppHdr>
+    <Document>
+        <FIToFIPmtStsRpt>
+            <GrpHdr>
+                <MsgId>M00107586e1f79dc27e19428cb2fa078</MsgId>
+                <CreDtTm>2019-12-10T11:22:13.778Z</CreDtTm>
+            </GrpHdr>
+            <TxInfAndSts>
+                <OrgnlEndToEndId>E001075862019121008227adb6ec43aa</OrgnlEndToEndId>
+                <TxSts>ACCC</TxSts>
+                <FctvIntrBkSttlmDt>
+                    <DtTm>2019-12-10T11:22:13.778Z</DtTm>
+                </FctvIntrBkSttlmDt>
+                <OrgnlTxRef>
+                    <IntrBkSttlmDt>2019-12-10</IntrBkSttlmDt>
+                </OrgnlTxRef>
+            </TxInfAndSts>
+        </FIToFIPmtStsRpt>
+    </Document>
+</Envelope>

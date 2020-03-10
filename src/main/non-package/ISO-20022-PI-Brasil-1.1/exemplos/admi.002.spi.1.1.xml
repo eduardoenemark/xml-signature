@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Envelope xmlns="admi.002.spi.1.1.xsd">
+    <AppHdr>
+        <Fr>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00917153</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </Fr>
+        <To>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00738758</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </To>
+        <BizMsgIdr>M00917153ef2d9a040c6c4ef1a8aca06</BizMsgIdr>
+        <MsgDefIdr>admi.002.spi.1.1</MsgDefIdr>
+        <CreDt>2019-12-10T11:22:13.837Z</CreDt>
+        <Sgntr>
+            <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+                <ds:SignedInfo>
+                    <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                    <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+                    <ds:Reference URI="#b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>zqj93e6vEFVL2Pssc9nUdPweSYVxUadBaTebSuaCG0I=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference URI="">
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>/wVX9lUj2XXmTDoWyBCI9bfTdoWq5anVZYSNnC0EHQE=</ds:DigestValue>
+                    </ds:Reference>
+                    <ds:Reference>
+                        <ds:Transforms>
+                            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+                        </ds:Transforms>
+                        <ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+                        <ds:DigestValue>xBCy91/SLcy/BZSxTxegXgHuV//vR2KEuTwCeOkaxKk=</ds:DigestValue>
+                    </ds:Reference>
+                </ds:SignedInfo>
+                <ds:SignatureValue>T0ExBVvLnntEEkS+8D0aSa+PXRjMUVpoIcKvzw1UTPvgdNgYycGOGx7BE4cKzB6isETAn8dApmUc
+                    vio7vF9cWtqz3z24AMBULzZKd4KOY1rz+q9ODaAxRCJDAT4fipgsOCcZrJtLnxb++3fhxBoYRDhS
+                    KoHCQAYbTQiwchCuwS+utzFop6Y02Ypxrg8QE4dd1AHHRhYk4QccPkzJ++tQfdEtlJcqSqaOJPZV
+                    oQx3OVBX3El4IavWU4CyWdBeTZ7Gce5CQQrTf0Xy7CYO/n9d510Tgwiv4Q5Prpuh6kCiSdMpwC5A
+                    d/K2SqX+aTvBFIu+z4Ya8/PZ7evQFftP15BonA==
+                </ds:SignatureValue>
+                <ds:KeyInfo Id="b2177f73-7685-39ac-83db-fa00ffd2b89c">
+                    <ds:X509Data>
+                        <ds:X509IssuerSerial>
+                            <ds:X509IssuerName>CN=SPI - Banco Central do Brasil</ds:X509IssuerName>
+                            <ds:X509SerialNumber>17649420304715376549</ds:X509SerialNumber>
+                        </ds:X509IssuerSerial>
+                    </ds:X509Data>
+                </ds:KeyInfo>
+            </ds:Signature>
+        </Sgntr>
+    </AppHdr>
+    <Document>
+        <admi.002.001.01>
+            <RltdRef>
+                <Ref>M00917153ef2d9a040c6c4ef1a8aca06</Ref>
+            </RltdRef>
+            <Rsn>
+                <RjctgPtyRsn>XML is not valid</RjctgPtyRsn>
+                <RjctnDtTm>2019-12-10T11:22:13.837Z</RjctnDtTm>
+                <ErrLctn>http://www.bcb.gov.br/spi/pacs.008.spi.1.0.xsd":MsgIdType</ErrLctn>
+                <RsnDesc>cvc-pattern-valid: Value 'N00527917064f7d00ccf448c9948f3b1' is not facet-valid with respect to
+                    pattern '[M][0-9]{8}[a-zA-Z0-9]{23}' for type 'MsgIdType'
+                </RsnDesc>
+                <AddtlData>M006907294fec5a1c622e4607acdd2cd</AddtlData>
+            </Rsn>
+        </admi.002.001.01>
+    </Document>
+</Envelope>
