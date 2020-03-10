@@ -1,0 +1,79 @@
+<Envelope xmlns:bc="https://www.bcb.gov.br/estabilidadefinanceira/forumpagamentosinstantaneos/pibr.001.spi.1.0.xsd">
+    <AppHdr id="AppHdr">
+        <Fr>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00000208</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </Fr>
+        <To>
+            <FIId>
+                <FinInstnId>
+                    <Othr>
+                        <Id>00038166</Id>
+                    </Othr>
+                </FinInstnId>
+            </FIId>
+        </To>
+        <BizMsgIdr>M0057358295daa0eabbc34fe9aed0220</BizMsgIdr>
+        <MsgDefIdr>pibr.001.spi.1.0</MsgDefIdr>
+        <CreDt>2020-03-10T14:30:00.319Z</CreDt>
+        <Sgntr id="Sgntr"><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:CanonicalizationMethod>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></ds:SignatureMethod>
+<ds:Reference URI="#AppHdr">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"></ds:Transform>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>QAxx/qcOJuPsrw5vkYl9Ky7BcF5PnEvZ9p7io4zcCIM=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#Document">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>i0vLR37WArnTSgtX9UYvA+uDosDrrEGLVar+vUtv6uc=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="#KeyInfo">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></ds:Transform>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></ds:DigestMethod>
+<ds:DigestValue>Z6bireyI9cGiM9Kx/mhB1pZq8rKuQFfem3rYjMbDMJY=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>
+aSETQl/xmEEk47UUoP2f0WCOiRW8OiSe0p8+NhVIApTcYESpWpUPLXWvpJNVlRH0xW0MiWOtOU0R&#xD;
+HsZOaOpmxk5N8RQNOm3XvTblylvnKm7R+dx/Qme8Aim7gJADVQplIg7hQ0DYQaq8I9xs/pwV0gli&#xD;
+Xf/RKr2qvk42tkJBQfIkTMVSHtV2fHZeuMPN31GAegjuq4RI6sFcaDQNS+zayHaPDX0+SW9WeDEE&#xD;
+tD2dsGZ8HXXjIkTq1/uvuBvyF7K+S8/vhn0zFTpXhY4BOnOC5X+6ksIKAz/iFVbzW6HHVL/SwoQu&#xD;
+L0P1BCfUmSsTKZtz17/4oTg6A4xHSJVR1Mg64Q==
+</ds:SignatureValue>
+<ds:KeyInfo Id="KeyInfo">
+<ds:X509Data>
+<ds:X509IssuerSerial>
+<ds:X509IssuerName>CN=AC VALID SPB,OU=CSPB-6,O=ICP-Brasil,C=BR</ds:X509IssuerName>
+<ds:X509SerialNumber>3378581693176843090</ds:X509SerialNumber>
+</ds:X509IssuerSerial>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature></Sgntr>
+    </AppHdr>
+    <Document id="Document">
+        <EchoReq>
+            <GrpHdr>
+                <MsgId>M0057358295daa0eabbc34fe9aed0220</MsgId>
+                <CreDtTm>2020-03-10T14:30:00.319Z</CreDtTm>
+            </GrpHdr>
+            <EchoTxInf>
+                <Data>BRB TESTE</Data>
+            </EchoTxInf>
+        </EchoReq>
+    </Document>
+</Envelope>

@@ -7,12 +7,13 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.apache.commons.io.IOUtils;
+import org.apache.xerces.jaxp.DocumentBuilderFactoryImpl;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 /*
  *
- * 
+ *
  */
 public final class Documents {
 
@@ -31,10 +32,10 @@ public final class Documents {
     }
 
     static {
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        documentBuilderFactory.setNamespaceAware(true);
-        documentBuilderFactory.setValidating(true);
-        documentBuilderFactory.setIgnoringComments(true);
+        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactoryImpl.newInstance();
+//        documentBuilderFactory.setNamespaceAware(true);
+//        documentBuilderFactory.setValidating(false);
+//        documentBuilderFactory.setIgnoringComments(true);
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
         } catch (ParserConfigurationException ex) {

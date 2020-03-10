@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Envelope xmlns:en="pibr.001.spi.1.2.xsd">
+<Envelope xmlns="pibr.001.spi.1.0.xsd">
     <AppHdr>
         <Fr>
             <FIId>
                 <FinInstnId>
                     <Othr>
-                        <Id>00573582</Id>
+                        <Id>00000208</Id>
                     </Othr>
                 </FinInstnId>
             </FIId>
@@ -21,17 +21,17 @@
         </To>
         <BizMsgIdr>M0057358295daa0eabbc34fe9aed0220</BizMsgIdr>
         <MsgDefIdr>pibr.001.spi.1.0</MsgDefIdr>
-        <CreDt>2020-02-14T13:57:00.319Z</CreDt>
+        <CreDt>2020-03-10T14:30:00.319Z</CreDt>
         <Sgntr></Sgntr>
     </AppHdr>
     <Document>
         <EchoReq>
             <GrpHdr>
                 <MsgId>M0057358295daa0eabbc34fe9aed0220</MsgId>
-                <CreDtTm>2020-02-14T13:57:00.319Z</CreDtTm>
+                <CreDtTm>2020-03-10T14:30:00.319Z</CreDtTm>
             </GrpHdr>
             <EchoTxInf>
-                <Data>Campo livre</Data>
+                <Data>BRB TESTE</Data>
             </EchoTxInf>
         </EchoReq>
     </Document>

@@ -2,7 +2,7 @@ package org.apache.xml.security.util;
 
 import javax.xml.xpath.XPath;
 import javax.xml.xpath.XPathFactory;
-
+import org.apache.xpath.jaxp.XPathFactoryImpl;
 /**
  *
  */
@@ -13,7 +13,7 @@ public final class XPaths {
     }
 
     static {
-        xPathFactory = XPathFactory.newInstance();
+        xPathFactory = XPathFactoryImpl.newInstance();
     }
 
     private static final XPathFactory xPathFactory;
