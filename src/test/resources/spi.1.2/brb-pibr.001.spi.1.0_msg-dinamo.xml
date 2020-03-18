@@ -1,0 +1,42 @@
+<Envelope xmlns="pibr.001.spi.1.0.xsd"><AppHdr><Fr><FIId><FinInstnId><Othr><Id>00000208</Id></Othr></FinInstnId></FIId></Fr><To><FIId><FinInstnId><Othr><Id>00038166</Id></Othr></FinInstnId></FIId></To><BizMsgIdr>M0057358295daa0eabbc34fe9aed0220</BizMsgIdr><MsgDefIdr>pibr.001.spi.1.0</MsgDefIdr><CreDt>2020-03-12T13:00:00.319Z</CreDt><Sgntr><ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+<ds:SignedInfo>
+<ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+<ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+<ds:Reference URI="#fD8FB4E069B4B17D624DB816F577F53A">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>zspxY1CJqIFxTarExUmilPhhHEqznz1yqqnRZt7eNr8=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference URI="">
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>HPPPC9HF7mUezVRH+6NMP+acJdJlvacU9j5wniKfIHo=</ds:DigestValue>
+</ds:Reference>
+<ds:Reference>
+<ds:Transforms>
+<ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+</ds:Transforms>
+<ds:DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"/>
+<ds:DigestValue>KI8BuPQWorSwu0NUYvg7QdhrUfYS3U+jAIzqCSdoHYw=</ds:DigestValue>
+</ds:Reference>
+</ds:SignedInfo>
+<ds:SignatureValue>B66/V4SrpO+zdw2XzCdHWvk/3Nf+1jwcAbfRkPvciA830LdzrylWbVezLYZMxAMz
+zJHF1SekqqKJJxfG8HyXn9/2KdR3rfHP1EY/MKr6PjfX9oTykuKA0HHwN/kcBIUC
+gEJwBTLeLKIND2rcsL0mpbLG7SFTdBwBS8m9LXh5zWlLWr7sfVPdMexzqjGFsVdD
+iJ0pFE3LfyTt6qaBoaX/dZ76jAztHbJ/n1bac0Zj3i1/QO8QlWdEv+81fNdVdkyP
+qMsEBriCCzKLuIXQa41aNND5By+OhQkAAa/jZq0wH1VGcWgMMDrVeXzPdhkzYl+f
+Cl46xJm1S/UaCBx0SMHCfA==</ds:SignatureValue>
+<ds:KeyInfo Id="fD8FB4E069B4B17D624DB816F577F53A">
+<ds:X509Data>
+<ds:X509IssuerSerial>
+<ds:X509IssuerName>CN=AC VALID SPB, OU=CSPB-6, O=ICP-Brasil, C=BR</ds:X509IssuerName>
+<ds:X509SerialNumber>3378581693176843090</ds:X509SerialNumber>
+</ds:X509IssuerSerial>
+</ds:X509Data>
+</ds:KeyInfo>
+</ds:Signature></Sgntr></AppHdr><Document><EchoReq><GrpHdr><MsgId>M0057358295daa0eabbc34fe9aed0220</MsgId><CreDtTm>2020-03-13T13:00:00.319Z</CreDtTm></GrpHdr><EchoTxInf><Data>BRBTESTE</Data></EchoTxInf></EchoReq></Document></Envelope>

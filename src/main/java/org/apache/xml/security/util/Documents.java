@@ -33,9 +33,9 @@ public final class Documents {
 
     static {
         DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactoryImpl.newInstance();
-//        documentBuilderFactory.setNamespaceAware(true);
-//        documentBuilderFactory.setValidating(false);
-//        documentBuilderFactory.setIgnoringComments(true);
+        documentBuilderFactory.setNamespaceAware(true);
+        documentBuilderFactory.setValidating(false);
+        documentBuilderFactory.setIgnoringComments(true);
         try {
             documentBuilder = documentBuilderFactory.newDocumentBuilder();
         } catch (ParserConfigurationException ex) {
